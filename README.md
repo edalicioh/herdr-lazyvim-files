@@ -2,6 +2,8 @@
 
 A personal Herdr mod that adds an **Open in LazyVim** action to the Files panel’s file preview.
 
+This repository is prepared for the [Herdr mod gallery](https://herdr.dev/gallery/). `preview.png` is a clean illustrative preview of the feature.
+
 ## Behavior
 
 - Clicking a file in Files opens Herdr’s read-only preview.
