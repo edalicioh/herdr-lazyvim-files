@@ -1,0 +1,6 @@
+This repository includes a modified copy of Herdr app's built-in Files mod.
+
+Original project: https://github.com/herdrdev/herdr-app
+Original license: Apache License, Version 2.0 (see LICENSE)
+
+The modified main.js adds a per-file Open in LazyVim action and routes files to Neovim panes in the active tab.
