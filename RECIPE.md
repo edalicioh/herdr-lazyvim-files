@@ -4,9 +4,12 @@ Build a Herdr Files mod that lets the user open a file from its read-only previe
 
 ## Files
 
+- Also package mods/file-icons-lazyvim/ as an optional variant for layouts already using the Material Icon Theme file-icons panel. Include its icons.js, icons/ SVG assets, chevrons, and Material Icon Theme license. Change its asset prefix and editor-picker overlay name to file-icons-lazyvim.
+
 - Put the mod in `mods/files-lazyvim/`.
 - Start from Herdr's built-in `files` mod, preserving its folder browser, previews, file status markers, refresh behavior, and icons. Keep the upstream attribution and license notice.
 - Add an **Open in LazyVim** action to the file preview header.
+- The action is visible only while a file preview is open; document this so people do not look for it in the file tree.
 - On click, inspect Neovim panes in the active tab. If there is one, send it a safely escaped Vim `:edit` command. If there are several, show a popup to choose one. If there are none, start `nvim` with the selected absolute path in another terminal pane.
 - Keep directory clicks as expand/collapse actions.
 

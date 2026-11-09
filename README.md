@@ -11,6 +11,13 @@ This repository is prepared for the [Herdr mod gallery](https://herdr.dev/galler
 - The action checks for Neovim panes in the active tab. One editor opens the file directly; multiple editors bring up a chooser; no editor starts Neovim in a new pane with that file.
 - Folder clicks keep their normal expand and collapse behavior.
 
+## Choose a variant
+
+- mods/files-lazyvim is the small variant based on Herdr's built-in Files panel.
+- mods/file-icons-lazyvim keeps the Material Icon Theme used by the file-icons panel and adds the same LazyVim action.
+
+The action appears in the preview header after you select a file. If your active layout uses file-icons (for example, main-graph), install file-icons-lazyvim and change the Files block's mod from file-icons to file-icons-lazyvim. This keeps the themed icons while restoring the LazyVim action.
+
 The editor chooser lists the Neovim panes Herdr identifies through pane program metadata or the terminal command. To make an editor discoverable, launch Neovim directly as a Herdr pane, rather than running it as a child process inside PowerShell.
 
 ## Requirements
@@ -36,6 +43,19 @@ In a personal layout, set the block with id files to use files-lazyvim:
 { "id": "files", "type": "block", "content": { "mod": "files-lazyvim" } }
 ~~~
 
+For the Material Icon Theme variant, copy mods/file-icons-lazyvim/ to the Herdr app folder and point the active layout's Files block at file-icons-lazyvim:
+
+~~~powershell
+$appHome = Join-Path $env:USERPROFILE '.config\herdr-app'
+New-Item -ItemType Directory -Path (Join-Path $appHome 'mods\file-icons-lazyvim') -Force | Out-Null
+Copy-Item -Path '.\mods\file-icons-lazyvim\*' -Destination (Join-Path $appHome 'mods\file-icons-lazyvim') -Recurse -Force
+herdr-app check (Join-Path $appHome 'mods\file-icons-lazyvim')
+~~~
+
+~~~json
+{ "id": "files", "type": "block", "content": { "mod": "file-icons-lazyvim" } }
+~~~
+
 Clone Herdr’s shipped main layout first if you do not already have a personal layout. The mod does not edit shipped layouts.
 
 Check the running app with:
@@ -45,5 +65,7 @@ herdr-app status
 ~~~
 
 ## License and attribution
+
+The file-icons-lazyvim variant includes Material Icon Theme assets under the MIT license; its license is included in that mod folder.
 
 The mod is derived from Herdr’s shipped Files mod. Herdr’s original license and source attribution are included in LICENSE and NOTICE. The per-file LazyVim routing and editor chooser are modifications by Edalicio Heinzen.
